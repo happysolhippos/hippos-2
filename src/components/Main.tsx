@@ -20,7 +20,9 @@ async function run() {
 
     for(let i=0; i < response.value.length; i++) {
       if(wlist.includes(response.value[i].account.data.parsed.info.mint)) {
-        user_mints.push(response.value[i].account.data.parsed.info.mint);
+        if(response.value[i].account.data.parsed.info.tokenAmount.amount === 1) {
+          user_mints.push(response.value[i].account.data.parsed.info.mint);
+        }
       }
     }
 
@@ -29,9 +31,10 @@ async function run() {
     button!.style.display = 'none';
 
     for(let mint of user_mints) {
-      let btn = document.createElement("button");
-      btn.innerHTML = mint;
-      document.body.appendChild(btn);
+      let checkBox = document.createElement("a");
+      checkBox.innerHTML = mint;
+      checkBox.setAttribute("type", "checkbox");
+      document.body.appendChild(checkBox);
     }
   }
 }
