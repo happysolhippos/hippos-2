@@ -20,7 +20,7 @@ async function run() {
 
     for(let i=0; i < response.value.length; i++) {
       if(wlist.includes(response.value[i].account.data.parsed.info.mint)) {
-        if(response.value[i].account.data.parsed.info.tokenAmount.amount === 1) {
+        if(response.value[i].account.data.parsed.info.tokenAmount.amount == 1) {
           user_mints.push(response.value[i].account.data.parsed.info.mint);
         }
       }
